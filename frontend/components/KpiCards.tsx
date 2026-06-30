@@ -13,12 +13,17 @@ export default function KpiCards() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://insightflow-api-fh3o.onrender.com/kpis")
-      .then((res) => res.json())
-      .then((data) => {
-        setKpis(data);
-        setLoading(false);
-      });
+    const fetchData = () => {
+      fetch("https://insightflow-api-fh3o.onrender.com/kpis")
+        .then((res) => res.json())
+        .then((data) => {
+          setKpis(data);
+          setLoading(false);
+        });
+    };
+    fetchData();
+    const interval = setInterval(fetchData, 30000);
+    return () => clearInterval(interval);
   }, []);
 
   const metrics = [

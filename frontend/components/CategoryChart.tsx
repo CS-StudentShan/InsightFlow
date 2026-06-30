@@ -9,9 +9,17 @@ export default function CategoryChart() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://insightflow-api-fh3o.onrender.com/categories")
-      .then((res) => res.json())
-      .then((data) => { setData(data); setLoading(false); });
+    const fetchData = () => {
+      fetch("https://insightflow-api-fh3o.onrender.com/categories")
+        .then((res) => res.json())
+        .then((data) => {
+          setData(data);
+          setLoading(false);
+        });
+    };
+    fetchData();
+    const interval = setInterval(fetchData, 30000);
+    return () => clearInterval(interval);
   }, []);
 
   return (

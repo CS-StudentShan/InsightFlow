@@ -12,9 +12,17 @@ export default function TopProductsTable() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://insightflow-api-fh3o.onrender.com/top-products")
-      .then((res) => res.json())
-      .then((data) => { setProducts(data); setLoading(false); });
+    const fetchData = () => {
+      fetch("https://insightflow-api-fh3o.onrender.com/top-products")
+        .then((res) => res.json())
+        .then((data) => {
+          setProducts(data);
+          setLoading(false);
+        });
+    };
+    fetchData();
+    const interval = setInterval(fetchData, 30000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
