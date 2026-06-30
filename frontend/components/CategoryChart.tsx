@@ -10,7 +10,7 @@ export default function CategoryChart() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8000/categories")
+    fetch("https://insightflow-api-fh3o.onrender.com/categories")
       .then((res) => res.json())
       .then((data) => { setData(data); setLoading(false); });
   }, []);

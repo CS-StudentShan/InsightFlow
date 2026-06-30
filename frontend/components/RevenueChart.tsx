@@ -8,7 +8,7 @@ export default function RevenueChart() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8000/revenue-over-time")
+    fetch("https://insightflow-api-fh3o.onrender.com/revenue-over-time")
       .then((res) => res.json())
       .then((data) => { setData(data); setLoading(false); });
   }, []);

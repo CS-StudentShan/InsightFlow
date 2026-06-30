@@ -14,7 +14,7 @@ export default function KpiCards() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8000/kpis")
+    fetch("https://insightflow-api-fh3o.onrender.com/kpis") 
       .then((res) => res.json())
       .then((data) => {
         setKpis(data);

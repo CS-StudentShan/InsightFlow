@@ -14,7 +14,7 @@ export default function TopProductsTable() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8000/top-products")
+    fetch("https://insightflow-api-fh3o.onrender.com/top-products")
       .then((res) => res.json())
       .then((data) => { setProducts(data); setLoading(false); });
   }, []);
